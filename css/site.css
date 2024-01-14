@@ -8,3 +8,9 @@
   padding: 10px;
   border: solid 1px #A0A0A0;
 }
+
+body {
+  background-color: lightblue;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
