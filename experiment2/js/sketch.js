@@ -13,55 +13,60 @@ const VALUE2 = 2;
 // Globals
 let myInstance;
 let canvasContainer;
+let x, y;
+let num = 3;
+let click = false;
 
 class MyClass {
-    constructor(param1, param2) {
-        this.property1 = param1;
-        this.property2 = param2;
-    }
+  constructor(param1, param2) {
+    this.property1 = param1;
+    this.property2 = param2;
+  }
 
-    myMethod() {
-        // code to run when method is called
-    }
+  myMethod() {
+    // code to run when method is called
+  }
 }
 
 // setup() function is called once when the program starts
 function setup() {
-    // place our canvas, making it fit our container
-    canvasContainer = $("#canvas-container");
-    let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
-    canvas.parent("canvas-container");
-    // resize canvas is the page is resized
-    $(window).resize(function() {
-        console.log("Resizing...");
-        resizeCanvas(canvasContainer.width(), canvasContainer.height());
-    });
-    // create an instance of the class
-    myInstance = new MyClass(VALUE1, VALUE2);
-
-    var centerHorz = windowWidth / 2;
-    var centerVert = windowHeight / 2;
+  // place our canvas, making it fit our container
+  canvasContainer = $("#canvas-container");
+  let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
+  canvas.parent("canvas-container");
+  // resize canvas is the page is resized
+  $(window).resize(function () {
+    console.log("Resizing...");
+    resizeCanvas(canvasContainer.width(), canvasContainer.height());
+  });
+  element = document.getElementById("canvas-container");
+  element.addEventListener("click", () => click = click == false ? true : false);
+  background(255);
+  cursor(CROSS);
+  fill(0);
+  stroke(0, 50);
+  strokeWeight(6);
 }
 
-// draw() function is called repeatedly, it's the main animation loop
 function draw() {
-    background(220);    
-    // call a method on the instance
-    myInstance.myMethod();
-
-    // Put drawings here
-    var centerHorz = canvasContainer.width() / 2 - 125;
-    var centerVert = canvasContainer.height() / 2 - 125;
-    fill(234, 31, 81);
-    noStroke();
-    rect(centerHorz, centerVert, 250, 250);
-    fill(255);
-    textStyle(BOLD);
-    textSize(140);
-    text("p5*", centerHorz + 10, centerVert + 200);
+  if (click) {
+    updateMousePos();
+    line(x, y, x, y);
+    line(y, x, y, x);
+    line(x / num, y / num, x / num, y / num);
+    line(y / num, x / num, y / num, x / num);
+    line(x * num, y * num, x * num, y * num);
+    line(y * num, x * num, y * num, x * num);
+    updateNum();
+  }
 }
 
-// mousePressed() function is called once after every time a mouse button is pressed
-function mousePressed() {
-    // code to run when mouse is pressed
+function updateMousePos() {
+  x = mouseX;
+  y = mouseY;
+}
+
+function updateNum() {
+  if (num > 0.5) num -= 0.01;
+  else num += 1;
 }
