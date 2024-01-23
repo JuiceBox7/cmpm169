@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
+	<title>Experiment 2 - Vector Art, Animation & Interactivity</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -28,34 +28,53 @@
 	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
 	<main id="content">
 		<section>
-			<h1>Experiment X - Subject/Topic</h1>
+			<h1>Experiment 2 - Vector Art, Animation & Interactivity</h1>
 			<div class="minor-section">
 				<h2>Imitate</h2>
-				<p>To develop artistic creativity in coding, it can be helpful to start by studying and learning from existing examples. This might involve reviewing code written by others, analyzing successful techniques, or even copying and modifying code to better understand how it works. By imitating and learning from existing techniques and strategies, we can gain a better understanding of what has been done before and what is possible, and identify opportunities for improvement and innovation.</p>
-				<p>What code did you start with? (You don't need to provide the code itself, but where did you start?) Document this step briefly.</p>
-				<a href="//www.generative-gestaltung.de/2/sketches/?01_P/P_2_3_7_01">Referenced this</a><br>
-				<a href="http://www.generative-gestaltung.de/2/sketches/?01_P/P_2_2_3_01">and this</a>
+				<p>For this assignment, I looked at the references on the <a href="http://www.generative-gestaltung.de/2/">Generative Design website</a> and took two as inspiration. The first 
+					one I took some inspiration from was a piece that traced a semi transparent ring across a blank white canvas, and the 
+					semi transparent black stroke color allowed it to essentially shade the page. I thought the shading effect to be really 
+					cool, and decided to take this piece of code from it to incorporate into my experiment. As for the second piece I used 
+					as inspiration, it was a piece that mirrored what was drawn with the mouse in 8 directions stemming from the center.</p>
+				<a href="//www.generative-gestaltung.de/2/sketches/?01_P/P_2_3_7_01">Here is the first piece I referenced</a><br>
+				<a href="http://www.generative-gestaltung.de/2/sketches/?01_P/P_2_2_3_01">And here is the other</a>
 			</div>
 
 			<div class="minor-section">
 				<h2>Integrate</h2>
-				<p>After learning from existing techniques and strategies, we can build upon that foundation by combining elements from different sources. This might involve combining elements from different programming languages, using libraries or frameworks in new ways, or bringing together techniques from different fields or disciplines. By integrating and combining elements from different sources, we can create something new and unique.</p>
-				<p>How did you extend the code or combine with another technique to make something new? Document this step.</p>
+				<p>For integration, I put these ideas and pieces together to make a confusing/unique way of drawing on a canvas, along with 
+					it being semi transparent so that it can have the shading effect. The “stroke(0, 50);” line is how the stroke becomes 
+					semi transparent, and everything else is to edit the background, cursor, and width of the stroke. I then use some math 
+					to have fun with the lines that are drawn in the draw() function. The math essentially mirrors the mouse's x and y 
+					coordinates between the negative, negative quadrant and positive, positive quadrant of the canvas.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Innovate</h2>
-				<p>Finally, we can introduce new or original ideas to our coding process by thinking creatively and pushing the boundaries. This might involve developing entirely new techniques or approaches, or using existing techniques in new and creative ways. By innovating and introducing new ideas, we can create art that is truly groundbreaking.</p>
-				<p>How did you use the code as a jumping off point to create something truly unique and novel? Document this step thoroughly.</p>
+				<p>For the innovation part of the process, I used my JavaScript knowledge to give the canvas an event listener for click, 
+					as simply checking to see if the mouse is clicked in the draw function can lead to errors, since it's called per frame. 
+					This allowed for it to be more user friendly, as it just reads the click, and waits until the user completes the click 
+					(releasing left-click) to fire the event. Instead of calling the draw function from the event listener, I simply change 
+					a boolean variable which is checked in the draw function, to call two functions, as well as draw the lines. The 
+					UpdateMousePos() function updates the x,y variables to be the mouse's coordinates, and updateNum() decreases the value 
+					of num up to 0.5, then “resets it” to get some interesting line results.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
-				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment. Here's where you can put your reflections.</p>
 				<ul>
-					<li>What part of the project you contributed</li>
-					<li>A reflection on your work and the work of the team</li>
-					<li>Brief highs and lows</li>
+					<li>I worked on this assignment on my own, taking inspiration from the 
+						<a href="http://www.generative-gestaltung.de/2/">Generative Design website</a> on the direction the experiment 
+						would take. I tested a lot of different math equations to get interesting results for the line() function, but 
+						settled with the current results.</li>
+					<li>I feel that I did a good job on this experiment, and demonstrated each step of the imitate, integrate, innovate 
+						process along the way. I successfully created a fun interactive art piece, using vector art in a dynamic, fun way. 
+						It was a lot of fun to slowly evolve the wackiness of the drawing, and found it is very efficient at drawing 
+						ship-like objects.</li>
+					<li>The highs of the experiment were getting to see the slow evolution of my experiment to what it is currently. It was 
+						a lot more satisfying to look at when adding the semi-transparent lines. I am much more familiar with p5.js, and am 
+						confident in improving my skills with each experiment in this class from here on out. The lows were maybe not being 
+						able to spend as much time as I would have liked, due to other class work.</li>
 				</ul>
 			</div>
 
