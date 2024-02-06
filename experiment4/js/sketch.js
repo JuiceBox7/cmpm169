@@ -14,6 +14,10 @@ const VALUE2 = 2;
 let myInstance;
 let canvasContainer;
 
+let video;
+let timer = 10;
+let clicked = false;
+
 class MyClass {
     constructor(param1, param2) {
         this.property1 = param1;
@@ -36,32 +40,42 @@ function setup() {
         console.log("Resizing...");
         resizeCanvas(canvasContainer.width(), canvasContainer.height());
     });
-    // create an instance of the class
-    myInstance = new MyClass(VALUE1, VALUE2);
-
-    var centerHorz = windowWidth / 2;
-    var centerVert = windowHeight / 2;
+    background(255);
+    textAlign(CENTER, CENTER);
+    textSize(50);
+    text("click to start", canvasContainer.width()/2, canvasContainer.height()/2);
+    element = document.getElementById("canvas-container");
+    element.addEventListener("click", () => clicked = true);
+    video = createCapture(VIDEO);
+    video.size(canvasContainer.width(), canvasContainer.height());
+    video.hide();
 }
 
-// draw() function is called repeatedly, it's the main animation loop
 function draw() {
-    background(220);    
-    // call a method on the instance
-    myInstance.myMethod();
+  if (!clicked) return;
+  if (timer > 0) {
+    background(255);
+    textAlign(CENTER, CENTER);
+    textSize(50);
+    text("get camera ready in " + timer, canvasContainer.width()/2, canvasContainer.height()/2);
+    if (frameCount % 60 == 0) timer--;
+    return;
+  }
 
-    // Put drawings here
-    var centerHorz = canvasContainer.width() / 2 - 125;
-    var centerVert = canvasContainer.height() / 2 - 125;
-    fill(234, 31, 81);
-    noStroke();
-    rect(centerHorz, centerVert, 250, 250);
-    fill(255);
-    textStyle(BOLD);
-    textSize(140);
-    text("p5*", centerHorz + 10, centerVert + 200);
-}
+  if (timer == 0) {
+    background(255);
+    image(video, 0, 0, canvasContainer.width(), canvasContainer.height());
+    timer--;
+  }
+  
+  let x1 = floor(random(canvasContainer.width()));
+  let y1 = 1;
 
-// mousePressed() function is called once after every time a mouse button is pressed
-function mousePressed() {
-    // code to run when mouse is pressed
+  let x2 = round(x1 + random(-3, 3));
+  let y2 = round(y1 + random(-3, 3));
+
+  let w = floor(random(10, 40));
+  let h = height - 1;
+
+  set(x2, y2, get(x1, y1, w, h));
 }
