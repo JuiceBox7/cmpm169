@@ -35,16 +35,11 @@ let haikus = [
 ];
 
 let currHaiku = 0;
-let font;
 let colors;
 let paths;
 let textImg;
 let zoom = 0.75;
 let focused = false;
-
-function preload() {
-  font = loadFont("fonts/FiraSansCompressed-Bold.otf");
-}
 
 class MyClass {
   constructor(param1, param2) {
@@ -99,7 +94,6 @@ function setupText() {
   textImg = createGraphics(canvasContainer.width(), canvasContainer.height());
   textImg.pixelDensity(1);
   textImg.background(255);
-  textImg.textFont(font);
   textImg.textSize(fontSize);
   textImg.text(textTyped, 100, fontSize + 50);
   textImg.loadPixels();
